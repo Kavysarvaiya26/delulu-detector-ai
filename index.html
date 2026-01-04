@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Delulu Detector AI</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #0f172a;
+      color: #e5e7eb;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .container {
+      background: #020617;
+      padding: 25px;
+      border-radius: 10px;
+      width: 420px;
+    }
+    textarea, button {
+      width: 100%;
+      margin-top: 10px;
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+    }
+    button {
+      background: #38bdf8;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .output {
+      margin-top: 15px;
+      background: #020617;
+      border: 1px solid #1e293b;
+      padding: 10px;
+      border-radius: 6px;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h2>🤖 Delulu Detector AI</h2>
+  <p>Enter your goal and get a reality check.</p>
+
+  <textarea id="goal" placeholder="I will master AI in 7 days"></textarea>
+  <button onclick="detect()">Detect Delulu</button>
+
+  <div class="output" id="result">
+Delulu Score: 95/100
+
+Why unrealistic:
+Mastering AI in 7 days is not feasible.
+
+Realistic plan:
+Learn basics and build a small project.
+  </div>
+</div>
+
+<script>
+function detect() {
+  const goal = document.getElementById("goal").value;
+  document.getElementById("result").innerText =
+    "Delulu Score: 95/100\n\n" +
+    "Why unrealistic:\n" +
+    goal + " is an unrealistic goal.\n\n" +
+    "Realistic plan:\nLearn basics step by step.";
+}
+</script>
+
+</body>
+</html>
