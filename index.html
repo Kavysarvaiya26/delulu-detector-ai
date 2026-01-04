@@ -17,66 +17,84 @@
       background: #020617;
       padding: 25px;
       border-radius: 10px;
-      width: 420px;
+      width: 500px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 10px;
     }
     textarea {
       width: 100%;
       height: 80px;
-      margin-top: 10px;
       padding: 10px;
       border-radius: 6px;
       border: none;
       resize: none;
+      margin-bottom: 10px;
     }
     button {
       width: 100%;
-      margin-top: 10px;
       padding: 10px;
       background: #38bdf8;
       border: none;
       border-radius: 6px;
-      font-weight: bold;
+      font-size: 16px;
       cursor: pointer;
+    }
+    button:hover {
+      background: #0ea5e9;
     }
     .output {
       margin-top: 15px;
+      white-space: pre-wrap;
       background: #020617;
       border: 1px solid #1e293b;
       padding: 10px;
       border-radius: 6px;
-      white-space: pre-wrap;
     }
   </style>
 </head>
 <body>
 
 <div class="container">
-  <h2>🤖 Delulu Detector AI</h2>
+  <h1>🤖 Delulu Detector AI</h1>
   <p>Enter your goal and get a reality check.</p>
 
-  <textarea id="goal" placeholder="I will master AI in 7 days"></textarea>
-  <button onclick="detect()">Detect Delulu</button>
+  <textarea id="goalInput" placeholder="e.g. I will master AI in 7 days"></textarea>
+  <button onclick="detectDelulu()">Detect Delulu</button>
 
-  <div class="output" id="result">
-Delulu Score: 95/100
-
-Why unrealistic:
-Mastering AI in 7 days is not feasible.
-
-Realistic plan:
-Learn basics step by step and build a small project.
+  <div class="output" id="outputBox">
+    Output will appear here...
   </div>
 </div>
 
 <script>
-function detect() {
-  const goal = document.getElementById("goal").value;
-  document.getElementById("result").innerText =
-    "Delulu Score: 95/100\n\n" +
-    "Why unrealistic:\n" +
-    goal + " is unrealistic.\n\n" +
-    "Realistic plan:\nLearn basics step by step.";
-}
+  function detectDelulu() {
+    const goal = document.getElementById("goalInput").value;
+
+    if (!goal) {
+      alert("Please enter a goal!");
+      return;
+    }
+
+    // TEMPORARY DEMO OUTPUT (Gemini response example)
+    document.getElementById("outputBox").innerText =
+`🤖 Delulu Detector Analysis
+
+1. Delulu Score: 95/100
+
+2. Why this goal is unrealistic:
+Mastering AI in 7 days is not feasible due to its vast complexity.
+
+3. What part is realistic:
+You can become familiar with basic AI concepts and tools.
+
+4. Realistic Plan:
+Day 1–2: Learn AI basics
+Day 3–4: Practice simple ML models
+Day 5–6: Explore NLP concepts
+Day 7: Build a tiny project`;
+  }
 </script>
 
 </body>
