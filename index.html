@@ -18,6 +18,9 @@
       padding: 25px;
       border-radius: 10px;
       width: 500px;
+      max-height : 90vh;
+      display: flex;
+      flex-direction: column;
     }
     h1 {
       text-align: center;
@@ -46,11 +49,15 @@
     }
     .output {
       margin-top: 15px;
-      white-space: pre-wrap;
-      background: #020617;
-      border: 1px solid #1e293b;
-      padding: 10px;
+      /* white-space: pre-wrap; */
+      background: #1e293b;
+      border: 1px solid #334155;
+      padding: 15px;
       border-radius: 6px;
+      height: 250px;
+      overflow-y: auto;
+      font-size: 14px;
+      line-height: 1.6;
     }
   </style>
 </head>
@@ -68,34 +75,34 @@
   </div>
 </div>
 
+<script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script>
-  function detectDelulu() {
+  async function detectDelulu() {
     const goal = document.getElementById("goalInput").value;
-
+    const outputBox = document.getElementById("outputBox");
     if (!goal) {
       alert("Please enter a goal!");
       return;
     }
 
-    // TEMPORARY DEMO OUTPUT (Gemini response example)
-    document.getElementById("outputBox").innerText =
-`🤖 Delulu Detector Analysis
-
-1. Delulu Score: 95/100
-
-2. Why this goal is unrealistic:
-Mastering AI in 7 days is not feasible due to its vast complexity.
-
-3. What part is realistic:
-You can become familiar with basic AI concepts and tools.
-
-4. Realistic Plan:
-Day 1–2: Learn AI basics
-Day 3–4: Practice simple ML models
-Day 5–6: Explore NLP concepts
-Day 7: Build a tiny project`;
+    // Gemini response example)
+    outputBox.innerHTML = 
+"<em> Analyzing delulu levels...🤖</em>";
+try{
+    
+      const response = await fetch('http://localhost:3000/detect-delulu', {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({ goal })
+      });
+    const data = await response.json();
+    outputBox.innerHTML = marked.parse(data.result);
+  } catch(err){
+    outputBox.innerText = "Error connecting to server.";
+  }
   }
 </script>
-
 </body>
 </html>
